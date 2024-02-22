@@ -19,10 +19,21 @@ public class LockedCameraController: IInitializable {
     }
 
     public void Initialize() {
-        AssingActionToButton(_cameraControlButtons.ZoomIn, null);
+        AssingActionToButton(_cameraControlButtons.ZoomIn, () => _lockedCamera.ChangeDistanceToObject(Vector3.forward));
+        AssingActionToButton(_cameraControlButtons.ZoomOut, () => _lockedCamera.ChangeDistanceToObject(Vector3.back));
+        AssingActionToButton(_cameraControlButtons.MoveAroundLeft, () => _lockedCamera.MoveAroundObject(Vector3.down));
+        AssingActionToButton(_cameraControlButtons.MoveAroundRight, () => _lockedCamera.MoveAroundObject(Vector3.up));
     }
 
-    private void AssingActionToButton(Button button, System.Action action) {
-       
+    private void AssingActionToButton(UIButtonAdditional button, System.Action action) {
+        Observable
+            .EveryUpdate()
+            .Where(_ => {
+                return button.IsDown;
+            })
+            .Subscribe(_ => {
+                action();
+            })
+            .AddTo(_disposables);
     }
 }
