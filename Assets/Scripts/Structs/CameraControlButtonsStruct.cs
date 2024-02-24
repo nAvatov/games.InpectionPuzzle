@@ -2,7 +2,7 @@ using System;
 using UnityEngine.UI;
 
 [Serializable]
-public struct CameraControlButtons {
+public struct CameraControlButtonsStruct {
     public UIButtonAdditional MoveAroundLeft;
     public UIButtonAdditional MoveAroundRight;
     public UIButtonAdditional ZoomIn;

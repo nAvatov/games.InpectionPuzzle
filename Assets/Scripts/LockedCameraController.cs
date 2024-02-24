@@ -7,13 +7,13 @@ using Zenject;
 
 public class LockedCameraController: IInitializable {
     private ILockedCamera _lockedCamera;
-    private CameraControlButtons _cameraControlButtons;
+    private CameraControlButtonsStruct _cameraControlButtons;
     private CompositeDisposable _disposables;
     private Vector2 _mousePressPoint;
     private Vector2 _mousePressPointDelta;
 
     [Inject] 
-    public void Construct(ILockedCamera cam, CameraControlButtons cameraControlButtons, CompositeDisposable disposables) {
+    public void Construct(ILockedCamera cam, CameraControlButtonsStruct cameraControlButtons, CompositeDisposable disposables) {
         _lockedCamera = cam;
         _cameraControlButtons = cameraControlButtons;
 
