@@ -33,7 +33,7 @@ public class LockedCamera : ILockedCamera {
     public void RotateCameraByGesture(Vector2 gestureStartPos, Vector2 gestureCurrentPos) {
         _gesturePosDelta = gestureCurrentPos - gestureStartPos;
 
-        _rotationVectorByGesture.x = -_gesturePosDelta.y;
+        _rotationVectorByGesture.x = _gesturePosDelta.y;
         _rotationVectorByGesture.y = _gesturePosDelta.x;
         _rotationVectorByGesture.z = 0;
 
