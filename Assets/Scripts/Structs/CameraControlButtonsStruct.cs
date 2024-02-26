@@ -7,4 +7,5 @@ public struct CameraControlButtonsStruct {
     public UIButtonAdditional MoveAroundRight;
     public UIButtonAdditional ZoomIn;
     public UIButtonAdditional ZoomOut;
+    public Button RestorePosition;
 }

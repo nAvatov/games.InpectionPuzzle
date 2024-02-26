@@ -73,6 +73,7 @@ public class Blades : IRotatableFanPart
                 _fanAudioSource.Stop();
                 _fanAudioSource.loop = false;
                 _fanAudioSource.pitch = 1f;
+                _fanAudioSource.DOKill();
             });
     }
 }

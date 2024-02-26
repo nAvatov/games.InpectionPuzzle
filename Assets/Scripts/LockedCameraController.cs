@@ -1,8 +1,5 @@
-using System;
 using UniRx;
-using UniRx.Triggers;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class LockedCameraController: IInitializable {
@@ -10,7 +7,6 @@ public class LockedCameraController: IInitializable {
     private CameraControlButtonsStruct _cameraControlButtons;
     private CompositeDisposable _disposables;
     private Vector2 _mousePressPoint;
-    private Vector2 _mousePressPointDelta;
 
     [Inject] 
     public void Construct(ILockedCamera cam, CameraControlButtonsStruct cameraControlButtons, CompositeDisposable disposables) {
@@ -21,12 +17,13 @@ public class LockedCameraController: IInitializable {
     }
 
     public void Initialize() {
-        AssingActionToButton(_cameraControlButtons.ZoomIn, () => _lockedCamera.ChangeDistanceToObject(Vector3.forward));
-        AssingActionToButton(_cameraControlButtons.ZoomOut, () => _lockedCamera.ChangeDistanceToObject(Vector3.back));
+        AssingActionToButton(_cameraControlButtons.ZoomIn, () => _lockedCamera.ChangeDistanceToObject(Vector3.back));
+        AssingActionToButton(_cameraControlButtons.ZoomOut, () => _lockedCamera.ChangeDistanceToObject(Vector3.forward));
         AssingActionToButton(_cameraControlButtons.MoveAroundLeft, () => _lockedCamera.MoveAroundObject(Vector3.down));
         AssingActionToButton(_cameraControlButtons.MoveAroundRight, () => _lockedCamera.MoveAroundObject(Vector3.up));
 
         AssingMouseGestures();
+        AssingCameraRestore();
     }
 
     private void AssingMouseGestures() {
@@ -61,6 +58,14 @@ public class LockedCameraController: IInitializable {
             })
             .Subscribe(_ => {
                 action();
+            })
+            .AddTo(_disposables);
+    }
+
+    private void AssingCameraRestore() {
+        _cameraControlButtons.RestorePosition.OnClickAsObservable()
+            .Subscribe(_ => {
+                _lockedCamera.RestoreTransform();
             })
             .AddTo(_disposables);
     }

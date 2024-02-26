@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class UI_Notificator : MonoBehaviour {
+public class UI_Notifier : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI _notifyTMP;
     [SerializeField] private float _fadeDuration = 1f;
     [SerializeField] private float _notificationTimer = 5f;
