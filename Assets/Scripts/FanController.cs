@@ -9,6 +9,8 @@ public class FanController : IFanInteractive, ITargetObject {
     private Blades _blades;
     private Body _body;
     private Hinge _hinge;
+    [Inject] private AudioSource _fanAudioSource;
+    [Inject] private SoundConfigurationStruct _soundConfiguration;
 
     public Transform targetTransform => _fanParts.ViewCenter;
     public FanPartsStruct FanParts => _fanParts;
@@ -25,9 +27,9 @@ public class FanController : IFanInteractive, ITargetObject {
 
         AttachPartsReferences();
 
-        EnableBladesRoll();
-        EnableBodyYaw();
-        EnableHingePitch();
+        EnableFanInteraction(_fanParts.BladesRollButton, _blades);
+        EnableFanInteraction(_fanParts.BodyYawButton, _body);
+        EnableFanInteraction(_fanParts.HingePitchButton, _hinge);
     }
 
     private void AttachPartsReferences() {
@@ -36,44 +38,17 @@ public class FanController : IFanInteractive, ITargetObject {
         _hinge.Construct(_fanParts.Hinge, _fanParts.HingePitchButton);
     }
 
-    private void EnableBladesRoll() {
-        _fanParts.BladesRollButton.OnMouseDownAsObservable()
+    private void EnableFanInteraction(Collider interactionObject, IRotatableFanPart part) {
+        interactionObject.OnMouseDownAsObservable()
             .Subscribe(_ => {
-                if (!_blades.IsRotating) {
-                    _blades.StartRotation();
+                if (!part.IsRotating) {
+                    part.StartRotation();
                 } else {
-                    _blades.StopRotation();
+                    part.StopRotation();
                 }
 
-                _blades.IsRotating = !_blades.IsRotating;
-            })
-            .AddTo(_disposables);
-    }
-
-    private void EnableBodyYaw() {
-        _fanParts.BodyYawButton.OnMouseDownAsObservable()
-            .Subscribe(_ => {
-                if (!_body.IsRotating) {
-                    _body.StartRotation();
-                } else {
-                    _body.StopRotation();
-                }
-
-                _body.IsRotating = !_body.IsRotating;
-            })
-            .AddTo(_disposables);
-    }
-
-    private void EnableHingePitch() {
-        _fanParts.HingePitchButton.OnMouseDownAsObservable()
-            .Subscribe(_ => {
-                if (!_hinge.IsRotating) {
-                    _hinge.StartRotation();
-                } else {
-                    _hinge.StopRotation();
-                }
-
-                _hinge.IsRotating = !_hinge.IsRotating;
+                _fanAudioSource.PlayOneShot(_soundConfiguration.ButtonClick);
+                part.IsRotating = !part.IsRotating;
             })
             .AddTo(_disposables);
     }

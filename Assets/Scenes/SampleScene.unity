@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Hinge Pitch Button
 --- !u!1 &144356999
 GameObject:
@@ -1191,7 +1190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Blades Roll Button
 --- !u!1 &705507993
 GameObject:
@@ -1340,7 +1338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1374,7 +1372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 763408400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0eeba7d6a90eb4d8f28fc7c5cc36cb, type: 3}
+  m_Script: {fileID: 11500000, guid: ebab54528a74a2e4d8e9fd51a1a4b4aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _notifyTMP: {fileID: 1523518945}
@@ -1496,6 +1494,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1815820096766000910, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bdbb06e8448dfb14084d839baf3aaa93, type: 2}
+    - target: {fileID: 2086365034687331584, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4a740153c2a057a46af95523b718303c, type: 2}
     - target: {fileID: 3528796787045737956, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99962395
@@ -1508,6 +1514,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -3.143
       objectReference: {fileID: 0}
+    - target: {fileID: 4964357147795847334, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7072071f1d56bb24195e97135355d20d, type: 2}
+    - target: {fileID: 6551451851931362672, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e509910155809c4390fd764d47b0505, type: 2}
     - target: {fileID: 7379457294735701844, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
       propertyPath: m_Name
       value: fan
@@ -1552,12 +1566,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255394007406954645, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 781c63abb02260f4db733448d0f45092, type: 2}
+    - target: {fileID: 8856060706276494376, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 29ad879f4b9724244bc89011c428c689, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7864069876763241966, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1488551492}
+    - targetCorrespondingSourceObject: {fileID: 7864069876763241966, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1615036311}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7379457294735701844, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
       insertIndex: -1
@@ -1629,7 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Body
 --- !u!64 &1020953493
 MeshCollider:
@@ -1665,7 +1689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Hinge
 --- !u!64 &1020953495
 MeshCollider:
@@ -1701,7 +1724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Blades
 --- !u!64 &1020953497
 MeshCollider:
@@ -2235,8 +2257,135 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89537880b31baba468d36d4a9636ac49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notifyPanel: {fileID: 763408404}
   _notificationText: Body Yaw Button
+--- !u!1 &1615036310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1615036311}
+  - component: {fileID: 1615036312}
+  m_Layer: 0
+  m_Name: Fan Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1615036311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615036310}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1664985798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1615036312
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615036310}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1664985798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7864069876763241966, guid: 8c029bacec90a4648a16ee39593457a0, type: 3}
@@ -2274,9 +2423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fanParts:
     ViewCenter: {fileID: 1488551492}
-    BladesRollButton: {fileID: 0}
-    BodyYawButton: {fileID: 0}
-    HingePitchButton: {fileID: 0}
+    BladesRollButton: {fileID: 633745393}
+    BodyYawButton: {fileID: 1597700568}
+    HingePitchButton: {fileID: 139914245}
     Blades: {fileID: 1020953489}
     Hinge: {fileID: 1020953488}
     Body: {fileID: 1020953487}
@@ -2290,10 +2439,15 @@ MonoBehaviour:
     StartingRollDuration: 1
     RollDuration: 0.5
     StopRollDuration: 1
+    LowPitchValue: 0
   _bodyConfiguration:
     YawAngle: 45
     YawDuration: 3
     StopYawDuration: 1
+  _fanAudioSource: {fileID: 1615036312}
+  _soundConfiguration:
+    FanNoise: {fileID: 8300000, guid: 6d1ba1a80d34ab648a25f4251e39dff7, type: 3}
+    ButtonClick: {fileID: 8300000, guid: db881f015343e0543a3304c5725db16c, type: 3}
 --- !u!1 &1721877183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,6 +2478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59cbdacf89852640ba4048753a0ee2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _notificator: {fileID: 763408404}
+  _hoverConfiguration:
+    HoverEffectDuration: 0.5
+    HoverEmissionColor: {r: 0.4669811, g: 1, b: 0.48640782, a: 1}
   _mainCamera: {fileID: 963194227}
   _cameraControlButtons:
     MoveAroundLeft: {fileID: 501277591}

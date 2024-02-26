@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public struct BladesConfigurationStruct {
@@ -6,4 +7,5 @@ public struct BladesConfigurationStruct {
     public float StartingRollDuration;
     public float RollDuration;
     public float StopRollDuration;
+    public float LowPitchValue;
 }

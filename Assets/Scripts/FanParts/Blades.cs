@@ -8,6 +8,8 @@ public class Blades : IRotatableFanPart
     private Transform _blades;
     private Collider _button;
     [Inject] private BladesConfigurationStruct _configuration;
+    [Inject] private AudioSource _fanAudioSource;
+    [Inject] private SoundConfigurationStruct _soundConfiguration;
     
     public bool IsRotating { 
         get => _isRotating; 
@@ -27,6 +29,7 @@ public class Blades : IRotatableFanPart
        _button.enabled = false;
 
         Vector3 rotationVector = new Vector3(0, 0, _configuration.RollAngle);
+        PlayFanNoise();
 
         _blades
             .DOLocalRotate(rotationVector, _configuration.StartingRollDuration, RotateMode.LocalAxisAdd)
@@ -44,6 +47,8 @@ public class Blades : IRotatableFanPart
     public void StopRotation() {
         _button.enabled = false;
         
+        StopPlayingFanNoise();
+
         _blades
             .DORotate(new Vector3(0, 0, _configuration.RollAngle), _configuration.StopRollDuration)
             .SetRelative(true)
@@ -51,6 +56,23 @@ public class Blades : IRotatableFanPart
             .OnComplete(() => {
                 _blades.DOKill();
                 _button.enabled = true;
+            });
+    }
+
+    private void PlayFanNoise() {
+        _fanAudioSource.pitch = _configuration.LowPitchValue;
+        _fanAudioSource.clip = _soundConfiguration.FanNoise;
+        _fanAudioSource.Play();
+        _fanAudioSource.DOPitch(1f, _configuration.StartingRollDuration);
+        _fanAudioSource.loop = true;
+    }
+
+    private void StopPlayingFanNoise() {
+        _fanAudioSource.DOPitch(_configuration.LowPitchValue, _configuration.StopRollDuration)
+            .OnComplete(() => {
+                _fanAudioSource.Stop();
+                _fanAudioSource.loop = false;
+                _fanAudioSource.pitch = 1f;
             });
     }
 }

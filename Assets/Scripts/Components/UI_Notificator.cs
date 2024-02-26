@@ -1,12 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class UI_NotifyPanel : MonoBehaviour {
+public class UI_Notificator : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI _notifyTMP;
     [SerializeField] private float _fadeDuration = 1f;
+    [SerializeField] private float _notificationTimer = 5f;
     private CanvasGroup _cg;
 
     private void Start() {
@@ -31,7 +31,7 @@ public class UI_NotifyPanel : MonoBehaviour {
     private IEnumerator ShowNotificationTimer() {
         _cg.DOFade(1f, _fadeDuration);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(_notificationTimer);
 
         // Prevent useless call
         if (_cg.alpha == 1) {
