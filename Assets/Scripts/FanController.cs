@@ -2,8 +2,6 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
-using DG.Tweening;
-using System;
 
 public class FanController : IFanInteractive, ITargetObject {
     private CompositeDisposable _disposables;
@@ -27,9 +25,9 @@ public class FanController : IFanInteractive, ITargetObject {
 
         AttachPartsReferences();
 
-        EnableBladesInteraction();
-        EnableBodyInteraction();
-        SignHingeStream();
+        EnableBladesRoll();
+        EnableBodyYaw();
+        EnableHingePitch();
     }
 
     private void AttachPartsReferences() {
@@ -38,7 +36,7 @@ public class FanController : IFanInteractive, ITargetObject {
         _hinge.Construct(_fanParts.Hinge, _fanParts.HingePitchButton);
     }
 
-    private void EnableBladesInteraction() {
+    private void EnableBladesRoll() {
         _fanParts.BladesRollButton.OnMouseDownAsObservable()
             .Subscribe(_ => {
                 if (!_blades.IsRotating) {
@@ -52,7 +50,7 @@ public class FanController : IFanInteractive, ITargetObject {
             .AddTo(_disposables);
     }
 
-    private void EnableBodyInteraction() {
+    private void EnableBodyYaw() {
         _fanParts.BodyYawButton.OnMouseDownAsObservable()
             .Subscribe(_ => {
                 if (!_body.IsRotating) {
@@ -66,7 +64,7 @@ public class FanController : IFanInteractive, ITargetObject {
             .AddTo(_disposables);
     }
 
-    private void SignHingeStream() {
+    private void EnableHingePitch() {
         _fanParts.HingePitchButton.OnMouseDownAsObservable()
             .Subscribe(_ => {
                 if (!_hinge.IsRotating) {

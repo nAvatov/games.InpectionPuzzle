@@ -29,12 +29,12 @@ public class Blades : IRotatableFanPart
         Vector3 rotationVector = new Vector3(0, 0, _configuration.RollAngle);
 
         _blades
-            .DOLocalRotate(rotationVector, _configuration.StartingRollDuration, RotateMode.LocalAxisAdd) // 1
+            .DOLocalRotate(rotationVector, _configuration.StartingRollDuration, RotateMode.LocalAxisAdd)
             .SetRelative(true)
             .SetEase(Ease.InSine)
             .OnComplete(() => {
                 _button.enabled = true;
-                _blades.DOLocalRotate(rotationVector, _configuration.RollDuration, RotateMode.LocalAxisAdd) // 0.5
+                _blades.DOLocalRotate(rotationVector, _configuration.RollDuration, RotateMode.LocalAxisAdd)
                     .SetRelative(true)
                     .SetEase(Ease.Linear)
                     .SetLoops(-1);
@@ -45,7 +45,7 @@ public class Blades : IRotatableFanPart
         _button.enabled = false;
         
         _blades
-            .DORotate(new Vector3(0, 0, _configuration.RollAngle), _configuration.StopRollDuration) // 1
+            .DORotate(new Vector3(0, 0, _configuration.RollAngle), _configuration.StopRollDuration)
             .SetRelative(true)
             .SetEase(Ease.OutSine)
             .OnComplete(() => {
