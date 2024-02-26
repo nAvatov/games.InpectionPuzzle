@@ -3,10 +3,12 @@ using UniRx.Triggers;
 using UnityEngine;
 using Zenject;
 using DG.Tweening;
+using System;
 
 public class Fan : IFanInteractive, ITargetObject {
     private CompositeDisposable _disposables;
     private bool _isOn = false;
+    private bool _isBodyRotating = false;
     private bool _isHingeTilting = false;
     private FanPartsStruct _fanParts;
 
@@ -21,15 +23,16 @@ public class Fan : IFanInteractive, ITargetObject {
 
         SignSwitchStream();
         SignBodyStream();
+        SignHingeStream();
     }
 
     private void SignSwitchStream() {
         _fanParts.SwitchButton.OnMouseDownAsObservable()
             .Subscribe(_ => {
                 if (!_isOn) {
-                    SwitchOnAnimation();
+                    StartBladesRotating();
                 } else {
-                    SwitchOffAnimation();
+                    StopBladesRotating();
                 }
 
                 _isOn = !_isOn;
@@ -40,19 +43,55 @@ public class Fan : IFanInteractive, ITargetObject {
     private void SignBodyStream() {
         _fanParts.BodyRotationButton.OnMouseDownAsObservable()
             .Subscribe(_ => {
-                if (!_isHingeTilting) {
+                if (!_isBodyRotating) {
                     StartBodyRotation();
                 } else {
-
+                    StopBodyRotation();
                 }
+
+                _isBodyRotating = !_isBodyRotating;
             })
             .AddTo(_disposables);
     }
 
-    private void SwitchOnAnimation() {
-        _fanParts.SwitchButton.enabled = false;
+    private void SignHingeStream() {
+        _fanParts.HingeHandle.OnMouseDownAsObservable()
+            .Subscribe(_ => {
+                if (!_isHingeTilting) {
+                    StartHingeTilting();
+                } else {
+                    StopHingeTilting();
+                }
 
-        Vector3 v = Quaternion.AngleAxis(360f, Vector3.forward).eulerAngles;
+                _isHingeTilting = !_isHingeTilting;
+            })
+            .AddTo(_disposables);
+    }
+
+    private void StopHingeTilting() {
+        _fanParts.HingeHandle.enabled = false;
+
+        _fanParts.Hinge.DORotate(new Vector3(0, 0, 0), 1f)
+            .SetEase(Ease.OutSine)
+            .OnComplete(() => {
+                _fanParts.Hinge.DOKill();
+                _fanParts.HingeHandle.enabled = true;
+            });
+    }
+
+    private void StartHingeTilting() {
+        _fanParts.Hinge.DORotate(new Vector3(15f, 0, 0), 3f)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => {
+                _fanParts.Hinge.DORotate(new Vector3(-45f, 0, 0), 3f)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => StartHingeTilting());
+            });
+
+    }
+
+    private void StartBladesRotating() {
+        _fanParts.SwitchButton.enabled = false;
 
         Vector3 rotationVector = new Vector3(0, 0, 360f);
 
@@ -69,7 +108,7 @@ public class Fan : IFanInteractive, ITargetObject {
             });
     }
 
-    private void SwitchOffAnimation() {
+    private void StopBladesRotating() {
         _fanParts.SwitchButton.enabled = false;
         
         _fanParts.FanBlades
@@ -83,16 +122,27 @@ public class Fan : IFanInteractive, ITargetObject {
     }
 
     private void StartBodyRotation() {
+        _fanParts.Body
+            .DOLocalRotate(new Vector3(0, -45f, 0), 3f)
+            .SetEase(Ease.Linear)
+            .OnComplete(() => {
+                Debug.Log("On Complete body");
+                _fanParts.Body
+                    .DOLocalRotate(new Vector3(0, 45f, 0), 3f)
+                    .SetEase(Ease.Linear)
+                    .OnComplete(() => StartBodyRotation());
+            });
+    }
+
+    private void StopBodyRotation() {
         _fanParts.BodyRotationButton.enabled = false;
 
         _fanParts.Body
-            .DORotate(new Vector3(0, 45f, 0), 4f)
+            .DOLocalRotate(new Vector3(0, 0, 0), 1f)
             .SetEase(Ease.Linear)
             .OnComplete(() => {
-                _fanParts.Body
-                    .DORotate(new Vector3(0, -45f, 0), 4f)
-                    .SetEase(Ease.Linear)
-                    .OnComplete(() => StartBodyRotation());
+                _fanParts.Body.DOKill();
+                _fanParts.BodyRotationButton.enabled = true;
             });
     }
 }
