@@ -4,10 +4,9 @@ using Zenject;
 
 public class MainInstaller : MonoInstaller {
     private CompositeDisposable _disposables = new CompositeDisposable();
-    [Header("Audio")]
-    [SerializeField] private AudioSource _audioSource;
 
     [Header("Hover notifications")]
+    [SerializeField] private UI_MainCommonCanvas _mainCommonCanvas;
     [SerializeField] private UI_Notifier _notifier;
     [SerializeField] private HoverConfigurationStruct _hoverConfiguration;
     
@@ -15,10 +14,10 @@ public class MainInstaller : MonoInstaller {
         Container.Bind<CompositeDisposable>().FromInstance(_disposables);
 
         BindNotificationService();
-        Container.BindInstance(_audioSource);
     }
 
     private void BindNotificationService() {
+        Container.Bind<IMainCommonCanvas>().To<UI_MainCommonCanvas>().FromInstance(_mainCommonCanvas);
         Container.BindInstance(_notifier).AsSingle();
         Container.BindInstance(_hoverConfiguration);
     }

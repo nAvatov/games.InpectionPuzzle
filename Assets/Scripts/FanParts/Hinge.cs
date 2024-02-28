@@ -23,10 +23,10 @@ public class Hinge : IRotatableFanPart {
     }
 
     public void StartRotation() {
-        _hinge.DORotate(new Vector3(_configuration.PitchDownAngle, 0, 0), _configuration.TiltDuration)
+        _hinge.DOLocalRotate(new Vector3(_configuration.PitchDownAngle, 0, 0), _configuration.TiltDuration)
             .SetEase(Ease.Linear)
             .OnComplete(() => {
-                _hinge.DORotate(new Vector3(_configuration.PitchUpAngle, 0, 0), _configuration.TiltDuration)
+                _hinge.DOLocalRotate(new Vector3(_configuration.PitchUpAngle, 0, 0), _configuration.TiltDuration)
                     .SetEase(Ease.Linear)
                     .OnComplete(() => StartRotation());
             });
@@ -35,7 +35,7 @@ public class Hinge : IRotatableFanPart {
     public void StopRotation() {
         _button.enabled = false;
 
-        _hinge.DORotate(new Vector3(0, 0, 0), _configuration.StopTiltDuration)
+        _hinge.DOLocalRotate(new Vector3(0, 0, 0), _configuration.StopTiltDuration)
             .SetEase(Ease.OutSine)
             .OnComplete(() => {
                 _hinge.DOKill();

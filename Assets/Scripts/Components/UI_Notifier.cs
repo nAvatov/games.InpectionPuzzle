@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class UI_Notifier : MonoBehaviour {
     [SerializeField] private TMPro.TextMeshProUGUI _notifyTMP;
-    [SerializeField] private float _fadeDuration = 1f;
+    [SerializeField] private float _fadeInDuration = 1f;
+    [SerializeField] private float _fadeOutDuration = 0.3f;
     [SerializeField] private float _notificationTimer = 5f;
     private CanvasGroup _cg;
 
@@ -14,6 +15,7 @@ public class UI_Notifier : MonoBehaviour {
     }
 
     public void ShowNotify(string text) {
+        Debug.Log("Notifier call");
         StopAllCoroutines();
         _cg.DOKill();
         
@@ -29,7 +31,7 @@ public class UI_Notifier : MonoBehaviour {
     }
 
     private IEnumerator ShowNotificationTimer() {
-        _cg.DOFade(1f, _fadeDuration);
+        _cg.DOFade(1f, _fadeInDuration);
 
         yield return new WaitForSeconds(_notificationTimer);
 
@@ -40,7 +42,7 @@ public class UI_Notifier : MonoBehaviour {
     }
 
     private void HideNotification(System.Action callback = null) {
-        _cg.DOFade(0f, _fadeDuration)
+        _cg.DOFade(0f, _fadeOutDuration)
             .OnComplete(() => {
                 _notifyTMP.SetText("");
                 if (callback != null) {

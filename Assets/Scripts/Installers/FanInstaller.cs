@@ -2,6 +2,7 @@ using UnityEngine;
 using Zenject;
 
 public class FanInstaller : MonoInstaller {
+    [SerializeField] private AudioSource _fanAudioSource;
     [Header("Attached Camera Dependencies")]
     [SerializeField] private Camera _attacheCamera;
     [SerializeField] private CameraControlButtonsStruct _cameraControlButtons;
@@ -14,6 +15,7 @@ public class FanInstaller : MonoInstaller {
     [SerializeField] private BodyConfigurationStruct _bodyConfiguration;
     [SerializeField] private SoundConfigurationStruct _soundConfiguration;
     public override void InstallBindings() {
+        Container.BindInstance(_fanAudioSource);
         BindFanDependencies();
         BindAttachedCameraDependencies();
     }
