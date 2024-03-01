@@ -729,6 +729,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 763408401}
+  - {fileID: 1668736170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -910,6 +911,41 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615036310}
   m_Enabled: 1
+--- !u!1 &1668736169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1668736170}
+  m_Layer: 5
+  m_Name: View Transition Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1668736170
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668736169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1182441863}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1721877183
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59cbdacf89852640ba4048753a0ee2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transitionCamera: {fileID: 0}
   _notifier: {fileID: 763408404}
   _hoverConfiguration:
     HoverEffectDuration: 0.5
@@ -1127,6 +1164,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014210399720243691, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 73.00214
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234699823593792691, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 73.00214
+      objectReference: {fileID: 0}
     - target: {fileID: 7865477286497404846, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_Name
       value: Interactable Fan
@@ -1151,7 +1196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2103379289}
   - component: {fileID: 2103379288}
-  - component: {fileID: 2103379287}
   m_Layer: 0
   m_Name: Transition Camera
   m_TagString: Untagged
@@ -1159,14 +1203,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &2103379287
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2103379286}
-  m_Enabled: 1
 --- !u!20 &2103379288
 Camera:
   m_ObjectHideFlags: 0

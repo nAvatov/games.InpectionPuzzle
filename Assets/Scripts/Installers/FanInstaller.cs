@@ -4,7 +4,7 @@ using Zenject;
 public class FanInstaller : MonoInstaller {
     [SerializeField] private AudioSource _fanAudioSource;
     [Header("Attached Camera Dependencies")]
-    [SerializeField] private Camera _attacheCamera;
+    [SerializeField] private Camera _attachedCamera;
     [SerializeField] private CameraControlButtonsStruct _cameraControlButtons;
     [SerializeField] private LockedCameraConfiguration _cameraConfiguration;
 
@@ -38,7 +38,7 @@ public class FanInstaller : MonoInstaller {
     private void BindAttachedCameraDependencies() {
         Container.BindInstance(_cameraConfiguration);
         Container.BindInstance(_cameraControlButtons);
-        Container.BindInstance(_attacheCamera);
+        Container.BindInstance(_attachedCamera);
         Container.Bind<ILockedCamera>().To<LockedCamera>().AsSingle();
         Container.Bind(typeof(IInitializable)).To<LockedCameraController>().AsSingle().NonLazy();
     }
