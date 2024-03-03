@@ -28,7 +28,7 @@ public class MainInstaller : MonoInstaller {
     private void BindTransitionCameraService() {
         Container.BindInstance(_transitionCamera);
 
-        Container.Bind<ITransitionCamera>().To<TransitionCamera>().AsSingle();
+        Container.Bind<ITransitionCamera>().To<TransitionCamera>().AsSingle().NonLazy();
     }
 
     private void OnDestroy() {

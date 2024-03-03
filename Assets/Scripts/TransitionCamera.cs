@@ -14,6 +14,7 @@ public class TransitionCamera : ITransitionCamera {
 
     [Inject]
     public void Construct(CompositeDisposable disposables, Camera transitionCameraReference, List<ClickableCameraView> clickableViews) {
+        _disposables = disposables;
         _transitionCamera = transitionCameraReference;
         _clickableViews = clickableViews;
 
@@ -24,8 +25,10 @@ public class TransitionCamera : ITransitionCamera {
 
     private void AssingClickableViews() {
         foreach(ClickableCameraView clickableView in _clickableViews) {
+            Debug.Log("Assign");
             clickableView.ClickableCollider.OnMouseDownAsObservable()
                 .Subscribe(_ => {
+                    Debug.Log("Transition call");
                     MoveToCamera(clickableView.TargetCamera);
                 })
                 .AddTo(_disposables);
