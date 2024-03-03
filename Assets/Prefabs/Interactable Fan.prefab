@@ -2340,6 +2340,8 @@ GameObject:
   - component: {fileID: 4432982867570883489}
   - component: {fileID: 8269156582383252826}
   - component: {fileID: 9188504417542512688}
+  - component: {fileID: 1271846265581256669}
+  - component: {fileID: 1077480593666814271}
   m_Layer: 0
   m_Name: Interactable Fan
   m_TagString: Untagged
@@ -2398,7 +2400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fanAudioSource: {fileID: 3705270747773038043}
-  _attacheCamera: {fileID: 4288172283513981259}
+  _attachedCamera: {fileID: 4288172283513981259}
   _cameraControlButtons:
     MoveAroundLeft: {fileID: 7690525812048132183}
     MoveAroundRight: {fileID: 1311731744999278426}
@@ -2439,6 +2441,38 @@ MonoBehaviour:
   _soundConfiguration:
     FanNoise: {fileID: 8300000, guid: 6d1ba1a80d34ab648a25f4251e39dff7, type: 3}
     ButtonClick: {fileID: 8300000, guid: db881f015343e0543a3304c5725db16c, type: 3}
+--- !u!114 &1271846265581256669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865477286497404846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc94b2527d433c408bcdd5cfbf26df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 4288172283513981259}
+  _collider: {fileID: 7057178641932811492}
+--- !u!114 &1077480593666814271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865477286497404846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 1271846265581256669}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &8284983076876531212
 GameObject:
   m_ObjectHideFlags: 0

@@ -351,10 +351,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 40891485}
     m_Modifications:
+    - target: {fileID: 1077480593666814271, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _context
+      value: 
+      objectReference: {fileID: 1721877185}
     - target: {fileID: 2894178871054523342, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_IgnoreReversedGraphics
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3483409892089247932, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _context
+      value: 
+      objectReference: {fileID: 1721877185}
+    - target: {fileID: 3483409892089247932, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _components.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483409892089247932, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _components.Array.data[0]
+      value: 
+      objectReference: {fileID: 416640313}
     - target: {fileID: 3986055567153257534, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_RenderMode
       value: 1
@@ -415,6 +431,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5014210399720243691, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 73.00214
+      objectReference: {fileID: 0}
+    - target: {fileID: 5234699823593792691, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 73.00214
+      objectReference: {fileID: 0}
     - target: {fileID: 7865477286497404846, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_Name
       value: Interactable Fan (1)
@@ -429,6 +453,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4432982867570883489, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
   m_PrefabInstance: {fileID: 416640311}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &416640313 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1271846265581256669, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+  m_PrefabInstance: {fileID: 416640311}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc94b2527d433c408bcdd5cfbf26df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b59cbdacf89852640ba4048753a0ee2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transitionCamera: {fileID: 0}
+  _transitionCamera: {fileID: 2103379288}
   _notifier: {fileID: 763408404}
   _hoverConfiguration:
     HoverEffectDuration: 0.5
@@ -1088,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1077480593666814271, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _context
+      value: 
+      objectReference: {fileID: 1721877185}
     - target: {fileID: 2095885990035318914, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -1100,6 +1139,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3483409892089247932, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _context
+      value: 
+      objectReference: {fileID: 1721877185}
     - target: {fileID: 3986055567153257534, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_RenderMode
       value: 1
