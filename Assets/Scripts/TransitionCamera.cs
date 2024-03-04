@@ -10,6 +10,21 @@ public class TransitionCamera : ITransitionCamera {
     private CompositeDisposable _disposables;
     private Camera _transitionCamera;
     private List<ClickableCameraView> _clickableViews;
+    private ClickableCameraView _currentSelectedCameraView;
+
+    public ClickableCameraView CurrentCameraView {
+        set {
+            if (_currentSelectedCameraView != null) {
+                _currentSelectedCameraView.ClickableCollider.enabled = true;
+            }
+
+            _currentSelectedCameraView = value;
+
+            _currentSelectedCameraView.ClickableCollider.enabled = false;
+        }
+
+        get => _currentSelectedCameraView;
+    }
     public Camera CameraReference => _transitionCamera;
 
     [Inject]
@@ -25,10 +40,9 @@ public class TransitionCamera : ITransitionCamera {
 
     private void AssingClickableViews() {
         foreach(ClickableCameraView clickableView in _clickableViews) {
-            Debug.Log("Assign");
             clickableView.ClickableCollider.OnMouseDownAsObservable()
                 .Subscribe(_ => {
-                    Debug.Log("Transition call");
+                    CurrentCameraView = clickableView;
                     MoveToCamera(clickableView.TargetCamera);
                 })
                 .AddTo(_disposables);
@@ -36,8 +50,13 @@ public class TransitionCamera : ITransitionCamera {
     }
 
     public void MoveToCamera(Camera cam) {
-        _transitionCamera.transform.DOMove(cam.transform.position, 2f);
         _transitionCamera.transform.DORotate(cam.transform.rotation.eulerAngles, 2f);
+        _transitionCamera.transform.DOMove(cam.transform.position, 2f)
+            .OnComplete(() => {
+                _transitionCamera.enabled = false;
+                cam.enabled = true;
+                _transitionCamera.DOKill();
+            });
     }
 
     public void ResetPosition() {
