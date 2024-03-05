@@ -33,14 +33,14 @@ public class LockedCamera : ILockedCamera {
     }
 
     public void RotateCameraByGesture(Vector2 gestureStartPos, Vector2 gestureCurrentPos) {
-        Debug.Log(_cameraTransform.gameObject.name);
         _gesturePosDelta = gestureCurrentPos - gestureStartPos;
 
-        _rotationVectorByGesture.x = _gesturePosDelta.y;
+        _rotationVectorByGesture.x = -_gesturePosDelta.y;
         _rotationVectorByGesture.y = _gesturePosDelta.x;
         _rotationVectorByGesture.z = 0;
 
-        _cameraTransform.RotateAround(_targetTransform.position, _rotationVectorByGesture, _configuration.CameraMoveSpeedByGestures);
+        _cameraTransform.RotateAround(_targetTransform.position, _rotationVectorByGesture.normalized, _configuration.CameraMoveSpeedByGestures);
+        _cameraTransform.rotation = Quaternion.Euler(_cameraTransform.rotation.eulerAngles.x, _cameraTransform.rotation.eulerAngles.y, 0f);
     }
 
     public void RestoreTransform() {
