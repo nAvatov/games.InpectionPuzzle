@@ -2390,13 +2390,13 @@ MonoBehaviour:
     ZoomOut: {fileID: 2649995728092813637}
     RestorePosition: {fileID: 2839116376992888545}
   _cameraConfiguration:
-    ZoomInRestriction: 0
-    ZoomOutRestriction: 0
-    CameraMoveSpeedByButtons: 0
-    CameraMoveSpeedByGestures: 0
-    InitialPosition: {x: 0, y: 0, z: 0}
-    InitialRotation: {x: 0, y: 0, z: 0}
-    RestoreDuration: 0
+    ZoomInRestriction: 0.5
+    ZoomOutRestriction: 1
+    CameraMoveSpeedByButtons: 0.5
+    CameraMoveSpeedByGestures: 1
+    InitialPosition: {x: 0, y: 0.4860001, z: 0.695}
+    InitialRotation: {x: 14, y: 180, z: 0}
+    RestoreDuration: 1
   _fanParts:
     ViewCenter: {fileID: 3028795609836773297}
     BladesRollButton: {fileID: 7793413094876570999}

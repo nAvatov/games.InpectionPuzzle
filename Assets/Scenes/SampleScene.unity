@@ -1180,8 +1180,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4288172283513981259, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288172283513981259, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_TargetDisplay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4288172283513981259, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: near clip plane
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4432982867570883489, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1254,6 +1262,10 @@ PrefabInstance:
     - target: {fileID: 8253254066581689976, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 197.1933
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188504417542512688, guid: 341668bedc5557d4da7f8dc8a9f460bc, type: 3}
+      propertyPath: _cameraConfiguration.ZoomInRestriction
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

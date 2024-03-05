@@ -33,8 +33,6 @@ public class TransitionCamera : ITransitionCamera {
         _transitionCamera = transitionCameraReference;
         _clickableViews = clickableViews;
 
-        Debug.Log(_clickableViews.Count);
-
         AssingClickableViews();
     }
 
@@ -49,12 +47,12 @@ public class TransitionCamera : ITransitionCamera {
         }
     }
 
-    public void MoveToCamera(Camera cam) {
-        _transitionCamera.transform.DORotate(cam.transform.rotation.eulerAngles, 2f);
-        _transitionCamera.transform.DOMove(cam.transform.position, 2f)
+    public void MoveToCamera(Camera inspectionCamera) {
+        _transitionCamera.transform.DORotate(inspectionCamera.transform.rotation.eulerAngles, 2f);
+        _transitionCamera.transform.DOMove(inspectionCamera.transform.position, 2f)
             .OnComplete(() => {
                 _transitionCamera.enabled = false;
-                cam.enabled = true;
+                inspectionCamera.enabled = true;
                 _transitionCamera.DOKill();
             });
     }

@@ -17,13 +17,13 @@ public class LockedCamera : ILockedCamera {
     }    
 
     public void ChangeDistanceToObject(Vector3 direction) {
-        if (direction == Vector3.forward && _cameraTransform.position.z < _configuration.ZoomOutRestriction) {
-            _cameraTransform.Translate(direction * _configuration.CameraMoveSpeedByButtons * Time.deltaTime, Space.World);
+        if (direction == Vector3.forward && _cameraTransform.localPosition.z > _configuration.ZoomInRestriction) {
+            _cameraTransform.Translate(direction * _configuration.CameraMoveSpeedByButtons * Time.deltaTime);
             return;
         }
 
-        if (direction == Vector3.back && _cameraTransform.position.z > _configuration.ZoomInRestriction) {
-            _cameraTransform.Translate(direction * _configuration.CameraMoveSpeedByButtons * Time.deltaTime, Space.World);
+        if (direction == Vector3.back && _cameraTransform.localPosition.z < _configuration.ZoomOutRestriction) {
+            _cameraTransform.Translate(direction * _configuration.CameraMoveSpeedByButtons * Time.deltaTime);
             return;
         }
     }
@@ -33,6 +33,7 @@ public class LockedCamera : ILockedCamera {
     }
 
     public void RotateCameraByGesture(Vector2 gestureStartPos, Vector2 gestureCurrentPos) {
+        Debug.Log(_cameraTransform.gameObject.name);
         _gesturePosDelta = gestureCurrentPos - gestureStartPos;
 
         _rotationVectorByGesture.x = _gesturePosDelta.y;
@@ -43,8 +44,8 @@ public class LockedCamera : ILockedCamera {
     }
 
     public void RestoreTransform() {
-        _cameraTransform.DORotate(_configuration.InitialRotation, _configuration.RestoreDuration);
-        _cameraTransform.DOMove(_configuration.InitialPosition, _configuration.RestoreDuration)
+        _cameraTransform.DOLocalRotate(_configuration.InitialRotation, _configuration.RestoreDuration);
+        _cameraTransform.DOLocalMove(_configuration.InitialPosition, _configuration.RestoreDuration)
             .OnComplete(() => _cameraTransform.DOKill());
     }
 }
