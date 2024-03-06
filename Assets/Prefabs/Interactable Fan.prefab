@@ -2321,6 +2321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4432982867570883489}
   - component: {fileID: 8269156582383252826}
+  - component: {fileID: 5725260139274654452}
   - component: {fileID: 9188504417542512688}
   - component: {fileID: 1271846265581256669}
   - component: {fileID: 1077480593666814271}
@@ -2366,10 +2367,11 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 9188504417542512688}
+  - {fileID: 5725260139274654452}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
---- !u!114 &9188504417542512688
+--- !u!114 &5725260139274654452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2378,10 +2380,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7865477286497404846}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b57d95bd0a5ebd742a402baa002a3bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: b2a63a80e6b016046aacdf71533ff803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fanAudioSource: {fileID: 3705270747773038043}
   _attachedCamera: {fileID: 4288172283513981259}
   _cameraControlButtons:
     MoveAroundLeft: {fileID: 7690525812048132183}
@@ -2397,6 +2398,19 @@ MonoBehaviour:
     InitialPosition: {x: 0, y: 0.4860001, z: 0.695}
     InitialRotation: {x: 14, y: 180, z: 0}
     RestoreDuration: 1
+--- !u!114 &9188504417542512688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865477286497404846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57d95bd0a5ebd742a402baa002a3bcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fanAudioSource: {fileID: 3705270747773038043}
   _fanParts:
     ViewCenter: {fileID: 3028795609836773297}
     BladesRollButton: {fileID: 7793413094876570999}

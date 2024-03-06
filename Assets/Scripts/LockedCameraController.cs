@@ -51,14 +51,9 @@ public class LockedCameraController: IInitializable {
     }
 
     private void AssingActionToButton(UIButtonAdditional button, System.Action action) {
-        Observable
-            .EveryUpdate()
-            .Where(_ => {
-                return button.IsDown;
-            })
-            .Subscribe(_ => {
-                action();
-            })
+        Observable.EveryUpdate()
+            .Where(_ => button.IsDown.Value)
+            .Subscribe(_ => action())
             .AddTo(_disposables);
     }
 

@@ -3,10 +3,6 @@ using Zenject;
 
 public class FanInstaller : MonoInstaller {
     [SerializeField] private AudioSource _fanAudioSource;
-    [Header("Attached Camera Dependencies")]
-    [SerializeField] private Camera _attachedCamera;
-    [SerializeField] private CameraControlButtonsStruct _cameraControlButtons;
-    [SerializeField] private LockedCameraConfiguration _cameraConfiguration;
 
     [Header("Fan Dependencies")]
     [SerializeField] private FanPartsStruct _fanParts;
@@ -17,9 +13,9 @@ public class FanInstaller : MonoInstaller {
     public override void InstallBindings() {
         Container.BindInstance(_fanAudioSource);
         BindFanDependencies();
-        BindAttachedCameraDependencies();
     }
 
+    // Разделить инсталлер на InspectionItem и отдельный инсталлер под конкретный тип предмета.
     private void BindFanDependencies() {
         Container.BindInstance(_soundConfiguration);
         Container.BindInstance(_fanParts);
@@ -33,13 +29,5 @@ public class FanInstaller : MonoInstaller {
         Container.Bind<Hinge>().AsSingle();
 
         Container.BindInterfacesAndSelfTo<FanController>().AsSingle().NonLazy();
-    }
-
-    private void BindAttachedCameraDependencies() {
-        Container.BindInstance(_cameraConfiguration);
-        Container.BindInstance(_cameraControlButtons);
-        Container.BindInstance(_attachedCamera);
-        Container.Bind<ILockedCamera>().To<LockedCamera>().AsSingle();
-        Container.Bind(typeof(IInitializable)).To<LockedCameraController>().AsSingle().NonLazy();
     }
 }

@@ -15,7 +15,6 @@ public class UI_Notifier : MonoBehaviour {
     }
 
     public void ShowNotify(string text) {
-        Debug.Log("Notifier call");
         StopAllCoroutines();
         _cg.DOKill();
         
