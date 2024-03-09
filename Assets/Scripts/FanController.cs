@@ -10,7 +10,7 @@ public class FanController : IFanInteractive, ITargetObject {
     private Body _body;
     private Hinge _hinge;
     [Inject] private AudioSource _fanAudioSource;
-    [Inject] private SoundConfigurationStruct _soundConfiguration;
+    [Inject] private FanSoundsConfiguration _soundConfiguration;
 
     public Transform targetTransform => _fanParts.ViewCenter;
     public FanPartsStruct FanParts => _fanParts;

@@ -9,7 +9,7 @@ public class FanInstaller : MonoInstaller {
     [SerializeField] private HingeConfigurationStruct _hingeConfiguration;
     [SerializeField] private BladesConfigurationStruct _bladesConfiguration;
     [SerializeField] private BodyConfigurationStruct _bodyConfiguration;
-    [SerializeField] private SoundConfigurationStruct _soundConfiguration;
+    [SerializeField] private FanSoundsConfiguration _soundConfiguration;
     public override void InstallBindings() {
         Container.BindInstance(_fanAudioSource);
         BindFanDependencies();

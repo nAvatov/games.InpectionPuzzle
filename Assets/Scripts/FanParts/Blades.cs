@@ -9,7 +9,7 @@ public class Blades : IRotatableFanPart
     private Collider _button;
     [Inject] private BladesConfigurationStruct _configuration;
     [Inject] private AudioSource _fanAudioSource;
-    [Inject] private SoundConfigurationStruct _soundConfiguration;
+    [Inject] private FanSoundsConfiguration _soundConfiguration;
     
     public bool IsRotating { 
         get => _isRotating; 

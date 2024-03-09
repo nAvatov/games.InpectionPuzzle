@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct SoundConfigurationStruct {
+public struct FanSoundsConfiguration {
     public AudioClip FanNoise;
     public AudioClip ButtonClick;
 }
