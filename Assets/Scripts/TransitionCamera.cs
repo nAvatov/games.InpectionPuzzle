@@ -69,6 +69,8 @@ public class TransitionCamera : ITransitionCamera {
     }
 
     public void MoveToCamera(Transform targetTransform, System.Action ClickableViewCallback) {
+        _transitionCamera.transform.DOKill();
+
         _transitionCamera.transform.DORotate(targetTransform.rotation.eulerAngles, 2f);
         _transitionCamera.transform.DOMove(targetTransform.position, 2f)
             .OnComplete(() => {

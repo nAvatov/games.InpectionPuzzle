@@ -6,9 +6,9 @@ public class Blades : IRotatableFanPart
 {
     private bool _isRotating;
     private Transform _blades;
-    private Collider _button;
+    private PressableButtonStruct _pressableButton;
     [Inject] private BladesConfigurationStruct _configuration;
-    [Inject] private AudioSource _fanAudioSource;
+    [Inject] private FanAudioSourcesStruct _fanAudioSources;
     [Inject] private FanSoundsConfiguration _soundConfiguration;
     
     public bool IsRotating { 
@@ -18,25 +18,28 @@ public class Blades : IRotatableFanPart
         }
     }
     public Transform Part => _blades;
-    public Collider Button => _button;
+    public Collider Button => _pressableButton.ButtonCollider;
 
-    public void Construct(Transform blades, Collider button) {
+    public void Construct(Transform blades, PressableButtonStruct pressableButton) {
         _blades = blades;
-        _button = button;
+        _pressableButton = pressableButton;
     }
 
     public void StartRotation() {
-       _button.enabled = false;
+        _pressableButton.ButtonCollider.enabled = false;
+        _blades.DOKill();
+
+        PlayFanNoise();
+        _pressableButton.PressButton();
 
         Vector3 rotationVector = new Vector3(0, 0, _configuration.RollAngle);
-        PlayFanNoise();
 
         _blades
             .DOLocalRotate(rotationVector, _configuration.StartingRollDuration, RotateMode.LocalAxisAdd)
             .SetRelative(true)
             .SetEase(Ease.InSine)
             .OnComplete(() => {
-                _button.enabled = true;
+                _pressableButton.ButtonCollider.enabled = true;
                 _blades.DOLocalRotate(rotationVector, _configuration.RollDuration, RotateMode.LocalAxisAdd)
                     .SetRelative(true)
                     .SetEase(Ease.Linear)
@@ -45,9 +48,10 @@ public class Blades : IRotatableFanPart
     }
 
     public void StopRotation() {
-        _button.enabled = false;
+        _pressableButton.ButtonCollider.enabled = false;
         
         StopPlayingFanNoise();
+        _pressableButton.PressButton(true);
 
         _blades
             .DORotate(new Vector3(0, 0, _configuration.RollAngle), _configuration.StopRollDuration)
@@ -55,25 +59,25 @@ public class Blades : IRotatableFanPart
             .SetEase(Ease.OutSine)
             .OnComplete(() => {
                 _blades.DOKill();
-                _button.enabled = true;
+                _pressableButton.ButtonCollider.enabled = true;
             });
     }
 
     private void PlayFanNoise() {
-        _fanAudioSource.pitch = _configuration.LowPitchValue;
-        _fanAudioSource.clip = _soundConfiguration.FanNoise;
-        _fanAudioSource.Play();
-        _fanAudioSource.DOPitch(1f, _configuration.StartingRollDuration);
-        _fanAudioSource.loop = true;
+        _fanAudioSources.BladesAudioSource.pitch = _configuration.LowPitchValue;
+        _fanAudioSources.BladesAudioSource.clip = _soundConfiguration.FanNoise;
+        _fanAudioSources.BladesAudioSource.Play();
+        _fanAudioSources.BladesAudioSource.DOPitch(1f, _configuration.StartingRollDuration);
+        _fanAudioSources.BladesAudioSource.loop = true;
     }
 
     private void StopPlayingFanNoise() {
-        _fanAudioSource.DOPitch(_configuration.LowPitchValue, _configuration.StopRollDuration)
+        _fanAudioSources.BladesAudioSource.DOPitch(_configuration.LowPitchValue, _configuration.StopRollDuration)
             .OnComplete(() => {
-                _fanAudioSource.Stop();
-                _fanAudioSource.loop = false;
-                _fanAudioSource.pitch = 1f;
-                _fanAudioSource.DOKill();
+                _fanAudioSources.BladesAudioSource.Stop();
+                _fanAudioSources.BladesAudioSource.loop = false;
+                _fanAudioSources.BladesAudioSource.pitch = 1f;
+                _fanAudioSources.BladesAudioSource.DOKill();
             });
     }
 }

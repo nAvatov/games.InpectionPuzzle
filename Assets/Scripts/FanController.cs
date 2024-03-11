@@ -9,7 +9,7 @@ public class FanController : IFanInteractive, ITargetObject {
     private Blades _blades;
     private Body _body;
     private Hinge _hinge;
-    [Inject] private AudioSource _fanAudioSource;
+    [Inject] private FanAudioSourcesStruct _fanAudioSources;
     [Inject] private FanSoundsConfiguration _soundConfiguration;
 
     public Transform targetTransform => _fanParts.ViewCenter;
@@ -27,9 +27,9 @@ public class FanController : IFanInteractive, ITargetObject {
 
         AttachPartsReferences();
 
-        EnableFanInteraction(_fanParts.BladesRollButton, _blades);
-        EnableFanInteraction(_fanParts.BodyYawButton, _body);
-        EnableFanInteraction(_fanParts.HingePitchButton, _hinge);
+        EnableFanInteraction(_fanParts.BladesRollButton.ButtonCollider, _blades);
+        EnableFanInteraction(_fanParts.BodyYawButton.ButtonCollider, _body);
+        EnableFanInteraction(_fanParts.HingePitchButton.ButtonCollider, _hinge);
     }
 
     private void AttachPartsReferences() {
@@ -47,7 +47,7 @@ public class FanController : IFanInteractive, ITargetObject {
                     part.StopRotation();
                 }
 
-                _fanAudioSource.PlayOneShot(_soundConfiguration.ButtonClick);
+                _fanAudioSources.ButtonsAudioSource.PlayOneShot(_soundConfiguration.ButtonClick);
                 part.IsRotating = !part.IsRotating;
             })
             .AddTo(_disposables);

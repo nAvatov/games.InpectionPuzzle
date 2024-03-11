@@ -5,7 +5,7 @@ using Zenject;
 public class Body : IRotatableFanPart {
     private bool _isRotating;
     private Transform _body;
-    private Collider _button;
+    private PressableButtonStruct _pressableButton;
     [Inject] private BodyConfigurationStruct _configuration;
     
     public bool IsRotating { 
@@ -15,14 +15,24 @@ public class Body : IRotatableFanPart {
         }
     }
     public Transform Part => _body;
-    public Collider Button => _button;
+    public Collider Button => _pressableButton.ButtonCollider;
 
-    public void Construct(Transform body, Collider button) {
+    public void Construct(Transform body, PressableButtonStruct pressableButton) {
         _body = body;
-        _button = button;
+        _pressableButton = pressableButton;
+        
+        _pressableButton.PressCallback = () => _pressableButton.ButtonCollider.enabled = true;
     }
 
     public void StartRotation() {
+        _pressableButton.ButtonCollider.enabled = false;
+        _pressableButton.PressButton();
+        
+        _body.DOKill();
+        BodyYawingRoutin();
+    }
+
+    private void BodyYawingRoutin() {
         _body
             .DOLocalRotate(new Vector3(0, -_configuration.YawAngle, 0), _configuration.YawDuration)
             .SetEase(Ease.Linear)
@@ -30,19 +40,20 @@ public class Body : IRotatableFanPart {
                 _body
                     .DOLocalRotate(new Vector3(0, _configuration.YawAngle, 0), _configuration.YawDuration)
                     .SetEase(Ease.Linear)
-                    .OnComplete(() => StartRotation());
+                    .OnComplete(() => BodyYawingRoutin());
             });
     }
 
     public void StopRotation() {
-        _button.enabled = false;
+        _pressableButton.ButtonCollider.enabled = false;
+        _pressableButton.PressButton(true);
 
         _body
             .DOLocalRotate(new Vector3(0, 0, 0), _configuration.StopYawDuration)
             .SetEase(Ease.Linear)
             .OnComplete(() => {
                 _body.DOKill();
-                _button.enabled = true;
+                _pressableButton.ButtonCollider.enabled = true;
             });
     }
 }

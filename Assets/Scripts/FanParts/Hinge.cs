@@ -5,7 +5,7 @@ using Zenject;
 public class Hinge : IRotatableFanPart {
     private bool _isRotating;
     private Transform _hinge;
-    private Collider _button;
+    private PressableButtonStruct _pressableButton;
     [Inject] private HingeConfigurationStruct _configuration;
     
     public bool IsRotating { 
@@ -15,31 +15,40 @@ public class Hinge : IRotatableFanPart {
         }
     }
     public Transform Part => _hinge;
-    public Collider Button => _button;
+    public Collider Button => _pressableButton.ButtonCollider;
 
-    public void Construct(Transform hinge, Collider button) {
+    public void Construct(Transform hinge, PressableButtonStruct pressableButton) {
         _hinge = hinge;
-        _button = button;
+        _pressableButton = pressableButton;
+
+        _pressableButton.PressCallback = () => _pressableButton.ButtonCollider.enabled = true;
     }
 
     public void StartRotation() {
+        _pressableButton.ButtonCollider.enabled = false;
+
+        _hinge.DOKill();
+        HingePinchingRoutine();
+    }
+
+    private void HingePinchingRoutine() {
         _hinge.DOLocalRotate(new Vector3(_configuration.PitchDownAngle, 0, 0), _configuration.TiltDuration)
             .SetEase(Ease.Linear)
             .OnComplete(() => {
                 _hinge.DOLocalRotate(new Vector3(_configuration.PitchUpAngle, 0, 0), _configuration.TiltDuration)
                     .SetEase(Ease.Linear)
-                    .OnComplete(() => StartRotation());
+                    .OnComplete(() => HingePinchingRoutine());
             });
     }
 
     public void StopRotation() {
-        _button.enabled = false;
+        _pressableButton.ButtonCollider.enabled = false;
 
         _hinge.DOLocalRotate(new Vector3(0, 0, 0), _configuration.StopTiltDuration)
             .SetEase(Ease.OutSine)
             .OnComplete(() => {
                 _hinge.DOKill();
-                _button.enabled = true;
+                _pressableButton.ButtonCollider.enabled = true;
             });
     }
 }

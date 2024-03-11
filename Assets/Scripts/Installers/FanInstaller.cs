@@ -2,8 +2,7 @@ using UnityEngine;
 using Zenject;
 
 public class FanInstaller : MonoInstaller {
-    [SerializeField] private AudioSource _fanAudioSource;
-
+    [SerializeField] private FanAudioSourcesStruct _fanAudioSources;
     [Header("Fan Dependencies")]
     [SerializeField] private FanPartsStruct _fanParts;
     [SerializeField] private HingeConfigurationStruct _hingeConfiguration;
@@ -11,7 +10,7 @@ public class FanInstaller : MonoInstaller {
     [SerializeField] private BodyConfigurationStruct _bodyConfiguration;
     [SerializeField] private FanSoundsConfiguration _soundConfiguration;
     public override void InstallBindings() {
-        Container.BindInstance(_fanAudioSource);
+        Container.BindInstance(_fanAudioSources);
         BindFanDependencies();
     }
 

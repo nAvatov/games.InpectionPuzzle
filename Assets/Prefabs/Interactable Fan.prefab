@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7896090393900165371}
   - component: {fileID: 4208557954785127526}
   m_Layer: 0
-  m_Name: button1
+  m_Name: body yaw button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,6 +757,39 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2966248237210616468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6977792992175073540}
+  m_Layer: 0
+  m_Name: Audio Sources
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6977792992175073540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966248237210616468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4977239019158502765}
+  - {fileID: 5354202398147245298}
+  m_Father: {fileID: 4432982867570883489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3338851404154734588
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +924,7 @@ GameObject:
   - component: {fileID: 1223256749643973789}
   - component: {fileID: 6317889886707464650}
   m_Layer: 0
-  m_Name: handle
+  m_Name: body tilt handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1227,7 +1260,7 @@ GameObject:
   - component: {fileID: 7793413094876570999}
   - component: {fileID: 6974111798747167158}
   m_Layer: 0
-  m_Name: button2
+  m_Name: blades roll button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,7 +1658,7 @@ GameObject:
   - component: {fileID: 4977239019158502765}
   - component: {fileID: 3705270747773038043}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Blades Noise Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1639,12 +1672,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5661521364557634169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4432982867570883489}
+  m_Father: {fileID: 6977792992175073540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &3705270747773038043
 AudioSource:
@@ -1891,7 +1924,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restor cam1 pos
+  m_text: Restore View
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1960,6 +1993,134 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6792699926788044838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5354202398147245298}
+  - component: {fileID: 7459724107038802835}
+  m_Layer: 0
+  m_Name: Button Click Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5354202398147245298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792699926788044838}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6977792992175073540}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &7459724107038802835
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792699926788044838}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.435
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6799493278841510923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,9 +2508,9 @@ Transform:
   m_Children:
   - {fileID: 2677884390151249439}
   - {fileID: 511630053272104241}
-  - {fileID: 4977239019158502765}
-  - {fileID: 4601159564868235947}
+  - {fileID: 6977792992175073540}
   - {fileID: 4561508058325806075}
+  - {fileID: 4601159564868235947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8269156582383252826
@@ -2410,12 +2571,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57d95bd0a5ebd742a402baa002a3bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fanAudioSource: {fileID: 3705270747773038043}
+  _fanAudioSources:
+    BladesAudioSource: {fileID: 3705270747773038043}
+    ButtonsAudioSource: {fileID: 7459724107038802835}
   _fanParts:
     ViewCenter: {fileID: 3028795609836773297}
-    BladesRollButton: {fileID: 7793413094876570999}
-    BodyYawButton: {fileID: 7896090393900165371}
-    HingePitchButton: {fileID: 1223256749643973789}
+    BladesRollButton:
+      _unpressedPosition: {x: -0.01424408, y: 0.052459717, z: 0.10483742}
+      _pressedPosition: {x: -0.01424408, y: 0.0464, z: 0.10483742}
+      _pressAnimationDuration: 0.3
+      ButtonCollider: {fileID: 7793413094876570999}
+    BodyYawButton:
+      _unpressedPosition: {x: 0.01424408, y: 0.05214691, z: 0.10483742}
+      _pressedPosition: {x: 0.01424408, y: 0.0461, z: 0.10483742}
+      _pressAnimationDuration: 0.3
+      ButtonCollider: {fileID: 7896090393900165371}
+    HingePitchButton:
+      _unpressedPosition: {x: 0, y: 0, z: 0}
+      _pressedPosition: {x: 0, y: 0, z: 0}
+      _pressAnimationDuration: 0
+      ButtonCollider: {fileID: 1223256749643973789}
     Blades: {fileID: 3372100786020035860}
     Hinge: {fileID: 2968329664127768189}
     Body: {fileID: 37300285562353987}

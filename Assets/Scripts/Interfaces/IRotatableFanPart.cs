@@ -5,7 +5,7 @@ public interface IRotatableFanPart {
     public Transform Part { get; }
     public Collider Button { get; }
 
-    public void Construct(Transform part, Collider button);
+    public void Construct(Transform part, PressableButtonStruct pressableButton);
 
     public void StartRotation();
     public void StopRotation();
