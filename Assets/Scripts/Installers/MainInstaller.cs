@@ -4,6 +4,8 @@ using Zenject;
 
 public class MainInstaller : MonoInstaller {
     private CompositeDisposable _disposables = new CompositeDisposable();
+    [Header("Common Inspection UI")]
+    [SerializeField] private CommonInspectionUiStruct _commonInspectionUI;
     [Header("Transition camera")]
     [SerializeField] private Camera _transitionCamera;
 
@@ -15,6 +17,7 @@ public class MainInstaller : MonoInstaller {
     public override void InstallBindings() {
         Container.Bind<CompositeDisposable>().FromInstance(_disposables);
 
+        BindInspectionUIService();
         BindNotificationService();
         BindTransitionCameraService();
     }
@@ -29,6 +32,10 @@ public class MainInstaller : MonoInstaller {
         Container.BindInstance(_transitionCamera);
 
         Container.Bind<ITransitionCamera>().To<TransitionCamera>().AsSingle().NonLazy();
+    }
+
+    private void BindInspectionUIService() {
+        Container.BindInstance(_commonInspectionUI);
     }
 
     private void OnDestroy() {
