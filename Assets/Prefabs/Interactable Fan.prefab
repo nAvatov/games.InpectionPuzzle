@@ -2449,6 +2449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc94b2527d433c408bcdd5cfbf26df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGraphicRaycaster: {fileID: 2894178871054523342}
   _camera: {fileID: 4288172283513981259}
   _collider: {fileID: 7057178641932811492}
 --- !u!114 &1077480593666814271

@@ -41,18 +41,17 @@ public class TransitionCamera : ITransitionCamera {
             clickableView.ClickableCollider.OnMouseDownAsObservable()
                 .Subscribe(_ => {
                     CurrentCameraView = clickableView;
-                    MoveToCamera(clickableView.TargetCamera, clickableView.OnInspectionStartHandler);
+                    MoveToCamera(clickableView.TargetCameraTransform, clickableView.OnInspectionStartHandler);
                 })
                 .AddTo(_disposables);
         }
     }
 
-    public void MoveToCamera(Camera inspectionCamera, System.Action ClickableViewCallback) {
-        _transitionCamera.transform.DORotate(inspectionCamera.transform.rotation.eulerAngles, 2f);
-        _transitionCamera.transform.DOMove(inspectionCamera.transform.position, 2f)
+    public void MoveToCamera(Transform targetTransform, System.Action ClickableViewCallback) {
+        _transitionCamera.transform.DORotate(targetTransform.rotation.eulerAngles, 2f);
+        _transitionCamera.transform.DOMove(targetTransform.position, 2f)
             .OnComplete(() => {
                 _transitionCamera.enabled = false;
-                inspectionCamera.enabled = true;
                 ClickableViewCallback();
                 _transitionCamera.DOKill();
             });

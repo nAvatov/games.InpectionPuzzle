@@ -15,6 +15,6 @@ public class InspectionItemInstaller : MonoInstaller {
         Container.BindInstance(_cameraControlButtons);
         Container.BindInstance(_attachedCamera);
         Container.Bind<ILockedCamera>().To<LockedCamera>().AsSingle();
-        Container.BindInterfacesAndSelfTo<LockedCameraController>().AsSingle().NonLazy();
+        Container.Bind<LockedCameraController>().AsSingle().NonLazy();
     }
 }
