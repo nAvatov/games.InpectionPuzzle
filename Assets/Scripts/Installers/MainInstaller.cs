@@ -20,6 +20,7 @@ public class MainInstaller : MonoInstaller {
         BindInspectionUIService();
         BindNotificationService();
         BindTransitionCameraService();
+        BindProgressService();
     }
 
     private void BindNotificationService() {
@@ -36,6 +37,10 @@ public class MainInstaller : MonoInstaller {
 
     private void BindInspectionUIService() {
         Container.BindInstance(_commonInspectionUI);
+    }
+
+    private void BindProgressService() {
+        Container.Bind(typeof(IInitializable), typeof(ITickable)).To<GlobalProgressFSM>().AsSingle().NonLazy();
     }
 
     private void OnDestroy() {
